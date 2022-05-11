@@ -13,7 +13,7 @@ note : this tool is using cloudflare in the background of the script
 2. ubantu 
 3. termux 
 4. garuda linux 
- ## Termux Insatallation 
+ ## Termux Installation 
  *`apt update && apt upgrade`
 
 *`pkg install git` 
