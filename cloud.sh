@@ -9,7 +9,15 @@ exit_out(){
 }
 #make a banner for the tools 
 banner(){
-    echo "this is a test banner.."
+	echo -e "\e[33;1m "
+	echo "         .-~~~-.
+  .- ~ ~-(       )_ _
+ /                    ~ -.
+|                          ',
+ \                         .'
+   ~- ._ ,. ,.,.,., ,.. -~
+           '       '"
+    echo -e "\e[32;1m MADE BY PRINCE"
 }
 # make a function to install all the requirements .. 
 req(){
@@ -49,9 +57,14 @@ start_cloud(){
     sleep 3 && ./cloudflare tunnel -url $link --logfile .pk.txt > /dev/null 2>&1 & 
     fi
     # now extract the link from the logfile .. 
-    sleep 6 
+    
+    sleep 6
+    clear
     banner
-    cat .pk.txt | grep "trycloudflare" | cut -d "|" -f2 | cut -d "}" -f2
+    echo -ne "\e[37;1m Link: "
+    grep -o 'https://[-a-z0-9]*\.trycloudflare.com' ".pk.txt"
+
+    grep -o 'https://[-0-9a-z]*\.trycloudflare.com'
 }
 #make a function to download the cloudflared 
 download(){
@@ -60,7 +73,7 @@ download(){
 }
 #first check the platform of the machine 
 check_platform(){
-if [[ -e cloudflared ]];then
+if [[ -e cloudflare ]];then
     echo -e "\e[36;1m[~] Cloudflared already installed ."
 else
     echo -e "\e[32;1m Downloding coludflared"
@@ -76,5 +89,6 @@ else
     fi
 fi
 }
+check_platform
 start_cloud
 
